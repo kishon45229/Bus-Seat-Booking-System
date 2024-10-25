@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <title>Abirami Travels | Home</title>
+
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                background-color: whitesmoke;
+                box-sizing: border-box;
+                min-height: 100vh;
+				display: grid;
+
+				--bkg: #5eb3fd;
+				--white: #e7e6e6;
+
+				background-color: var(--white);
+				background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+                margin: 0;
+                padding: 0;
+            }
+
+            .container-head {
+				width: 100%;
+				height: 100%;
+				display: grid;
+				place-items: center;
+				overflow: hidden;
+			}
+
+			.title {
+				position: absolute;
+				top: 25%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			.title h1 {
+				font-size: 25vmin;
+				font-weight: 900;
+				color: #4CAF50;
+			}
+
+			/* Define styles for the bus */
+			.bus {
+				width: 20vmin;
+				height: 12vmin;
+				background-color: var(--white);
+				background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+				border-radius: 100% / 70% 70% 70% 70%;
+				transform: translateX(100em) rotate(45deg); /* Rotate 45 degrees clockwise */
+				position: relative;
+				opacity: 0.9;
+				mix-blend-mode: exclusion;
+				animation: busMove 4s ease-out infinite;
+			}
+
+			/* Define the bus animation */
+			@keyframes busMove {
+				0% {
+					transform: translateX(30em) rotate(0deg);
+				}
+				100% {
+					transform: translateX(-35em) rotate(0deg);
+				}
+			}
+
+			/* Add a container for the bus image */
+			.bus-container {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+
+			/* Style the bus image */
+			.bus-container img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover; /* Ensure the image covers the entire container */
+			}
+        
+            .topnav {
+                background-color: #333;
+                overflow: hidden;
+                margin-bottom: 70px;
+            }
+        
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+            
+            .topnav a:hover {
+                background-color: var(--white);
+                color: black;
+            }
+            
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            #profile-icon {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                background-color: #ccc;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px; /* Adjust the font size as needed */
+            }
+            
+            /* CSS for the modal dialog */
+            #modal-overlay {
+                display: none;
+                position: fixed;
+                top: 60px;
+                right: 10px;
+                width: fit-content;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+                padding: 10px;
+            }
+
+            h1 {
+                line-height: 0;
+                text-align: center;
+                margin-top: 50px;
+                font-size: 100pt;
+                padding-top: 30px;
+                padding-bottom: 10px;
+                color: #4CAF50;
+            }
+
+            h2 {
+                padding-left: 40px;
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 5px;
+                font-size: 40pt;
+                letter-spacing: 70px;
+                font-weight: 1000;
+            }
+
+            h4 {
+                text-align: center;
+                margin-top: 40px;
+                margin-bottom: 5px;
+                font-size: 50pt;
+            }
+
+            h5 {
+                text-align: center;
+                font-size: 20pt;
+                color: #333;
+            }
+            
+            form {
+                background-color: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+                width: 650px;
+                margin: 20px auto 60px auto;
+            }
+
+            input, select {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border: 0.1px solid #999;
+                border-radius: 10px;
+                background-color: #f2f2f2;
+                font-size: 16px;
+                color: #666;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            label {
+                display: block;
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            input[type="date"] {
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+
+            input[type="submit"] {
+                display: inline-block;
+                text-align: center;
+                width: 100%; 
+                margin-top: 20px;
+                background-color: #4CAF50;
+                color: black;
+                border-style: none;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                font-size: large;
+            }
+
+            input[type="submit"]:hover {
+                cursor: pointer;
+                background-color: black;
+                color: white;
+            }
+
+            button {
+                display: block;
+                text-align: center;
+                width: 200px; 
+                font-size: 15pt;
+                margin-top: 5px;
+                padding: 5px;
+                background-color: #4CAF50;
+                color: black;
+                text-decoration: none;
+                border-style: none;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+
+            button:hover {
+                cursor: pointer;
+                background-color: black;
+                color: white;
+            }
+
+            .centered {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: max-content;
+            }
+
+            .seat-map {
+                margin-top: 20px;
+                font-family: Arial, sans-serif;
+                width: 450px;       
+                background-color: white;     
+            }
+
+            .row {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+
+            .left-side {
+                flex-grow: 0;
+            }
+
+            .right-side {
+                flex-grow: 10;
+                text-align: right;
+            }
+            
+            .seat {
+                display: inline-block;
+                width: 50px;
+                height: 30px;
+                border: 1px solid black;
+                text-align: center;
+                line-height: 30px;
+            }
+
+            .driver-seat {
+                background-color: #808080;
+            }
+
+            .door {
+                background-color: #808080;
+            }
+
+            .booked-gent {
+                background-color: #3085C3;
+                color: white;
+            }
+
+            .booked-lady {
+                background-color: #B0578D;
+                color: white;
+            }
+
+            .container-map {
+                text-align: center;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .btn-con {
+                text-align: center;
+            }
+
+            #totalPriceDisplay {
+                font-size: 20pt;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 200px; /* Adjust the width as needed */
+                margin: 0 auto; /* Set left and right margins to "auto" */
+                
+            }
+
+            table, th, td {
+                border: none;
+            }
+
+            .blue-box {
+                width: 30px;
+                height: 30px;
+                background-color: #3085C3;
+            }
+
+            .pink-box {
+                width: 30px;
+                height: 30px;
+                background-color: #B0578D;
+            }
+
+            .label-cell {
+                text-align: center; /* Adjust alignment as needed */
+            }
+        </style>
+
+        <!-- Load and inject the external Footer.html using JavaScript -->
+        <script>
+            $(document).ready(function () {
+                $("#footerContainer").load("Footer.html");
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="topnav">
+            <a class="active" href="Home.html">Home</a>
+            <a href="#" id="historyLink">History</a>
+            <a href="#" id="editProfileLink">Edit profile</a>
+        </div>
+
+        <!-- Profile icon with a face icon inside -->
+        <div id="profile-icon">
+            <i class="fas fa-user"></i>
+        </div>
+
+        <!-- Modal overlay -->
+        <div id="modal-overlay"></div>
+        
+        <div class="container-head">
+			<div class="title">
+				<h1>ABIRAMI</h1>   
+			</div>
+			<div class="bus">
+				<div class="bus-container">
+					<!-- Replace the bus image URL with your own -->
+					<img src="bus_image_url.png" alt="Bus Image">
+				</div>
+			</div>
+		</div>
+
+        <h2>TRAVELS</h2>
+        <h5>Book your bus tickets online with ease and convenience.</h5>
+
+        <form onsubmit="return validateForm();" method="post" action="Book_seat_Database.php">	
+            <!-- Add a hidden input field-->
+            <input type="hidden" id="selectedSeat" name="selectedSeat" value="">
+            <input type="hidden" id="totalPrice" name="totalPrice" value="">
+            <input type="hidden" id="username" name="username" value="">
+
+            <label for="from">From:</label>
+            <select id="From" name="From">
+                <option value="">-- Select --</option>
+                <option value="Jaffna">Jaffna</option>
+                <option value="Badulla">Badulla</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Galle">Galle</option>
+            </select>
+            
+            <label for="to">To:</label>
+            <select id="TO" name="TO">
+                <option value="">-- Select --</option>
+                <option value="Jaffna">Jaffna</option>
+                <option value="Badulla">Badulla</option>
+                <option value="Colombo">Colombo</option>
+                <option value="Galle">Galle</option>
+            </select>
+
+            <label for="date">Date of Travel:</label>
+            <input type="date" id="date" name="date">
+            
+            <label for="time">Time of Travel:</label>
+            <select id="time" name="time">
+                <option value="">-- Select time --</option>
+            </select>
+            
+            <label for="no-of-seats">Number of Seats:</label>
+            <select id="no-of-seats" name="no-of-seats">
+                <option value="">-- Select Number of Seats --</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+
+            <label for="seat">Select seat:</label><br>
+
+            <div class="container-map">
+                <!-- Seat Size Boxes and Labels -->
+                <table>
+                    <tr>
+                        <td class="blue-box"></td>
+                        <td class="label-cell">Booked by gents</td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td class="pink-box"></td>
+                        <td class="label-cell">Booked by ladies</td>
+                    </tr>
+                </table><br>
+
+                <div class="centered">
+                    <div class="seat-map">
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat door unselectable">Door</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat driver-seat unselectable">Driver</div>
+                            </div>
+                        </div>                        
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">A1</div>
+                                <div class="seat">A2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">B1</div>
+                                <div class="seat">B2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">C1</div>
+                                <div class="seat">C2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">D1</div>
+                                <div class="seat">D2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">E1</div>
+                                <div class="seat">E2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">F1</div>
+                                <div class="seat">F2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">G1</div>
+                                <div class="seat">G2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">H1</div>
+                                <div class="seat">H2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">I1</div>
+                                <div class="seat">I2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">J1</div>
+                                <div class="seat">J2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">K1</div>
+                                <div class="seat">K2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">L1</div>
+                                <div class="seat">L2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">M1</div>
+                                <div class="seat">M2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">N1</div>
+                                <div class="seat">N2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">O1</div>
+                                <div class="seat">O2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">P1</div>
+                                <div class="seat">P2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">Q1</div>
+                                <div class="seat">Q2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">R1</div>
+                                <div class="seat">R2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">S1</div>
+                                <div class="seat">S2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">T1</div>
+                                <div class="seat">T2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">U1</div>
+                                <div class="seat">U2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">V1</div>
+                                <div class="seat">V2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">W1</div>
+                                <div class="seat">W2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">X1</div>
+                                <div class="seat">X2</div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="left-side">
+                                <div class="seat">Y1</div>
+                                <div class="seat">Y2</div>
+                            </div>
+                            <div class="right-side">
+                                <div class="seat">Z1</div>
+                                <div class="seat">Z2</div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>   
+
+                <label for="totalPrice">Total Price:</label>
+                <p id="totalPriceDisplay"></p>
+
+                <input type="submit" value="Book seat">  
+            </div>  
+        </form>
+
+        <script>
+            // JavaScript to handle the profile icon click event
+            const profileIcon = document.getElementById('profile-icon');
+            const modalOverlay = document.getElementById('modal-overlay');
+            
+            let isModalOpen = false;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+           
+            document.getElementById("username").value = username;
+                
+            profileIcon.addEventListener('click', () => {
+                if (username) {
+                    if (!isModalOpen) {
+                        // Display the modal dialog with the username and buttons
+                        modalOverlay.innerHTML = `
+                            <h3>Welcome, ${username}!</h3>
+                            <button type="button" id="history">History</button>
+                            <button type="button" id="edit">Edit profile</button>
+                            <button type="button" id="logout">Log out</button>
+                        `;
+                        modalOverlay.style.display = 'block';
+                        isModalOpen = true;
+
+                        // Handle the click event for the "Settings" link inside the modal dialog
+                        const settingsLink = document.getElementById('settings-link');
+                        settingsLink.addEventListener('click', (e) => {
+                            e.preventDefault(); // Prevent the default link behavior
+                            // Redirect to the settings page or perform any desired action
+                            alert("Redirecting to Settings Page"); 
+                        });
+                    } 
+                    else {
+                        // Close the modal dialog
+                        modalOverlay.style.display = 'none';
+                        isModalOpen = false;
+                    }
+                } 
+                else {
+                    alert("Username not found in URL.");
+                }
+            });
+
+            // Close the modal dialog when clicking anywhere on the web page
+            document.body.addEventListener('click', (e) => {
+                if (isModalOpen && e.target !== profileIcon && e.target !== modalOverlay) {
+                    modalOverlay.style.display = 'none';
+                    isModalOpen = false;
+                }
+            });
+
+            // JavaScript code to handle the click event
+            document.getElementById("editProfileLink").addEventListener("click", function() {
+                // Construct the URL with the 'username' parameter
+                var urlEditNav = "Edit profile.php?username=" + encodeURIComponent(username);
+                
+                // Navigate to the constructed URL
+                window.location.href = urlEditNav;
+            });
+
+            // JavaScript code to handle the click event
+            document.getElementById("historyLink").addEventListener("click", function() {
+                // Construct the URL with the 'username' parameter
+                var urlHisNav = "History.php?username=" + encodeURIComponent(username);
+                
+                // Navigate to the constructed URL
+                window.location.href = urlHisNav;
+            });
+
+            function logoutPage() {
+                var url = "Index.html";
+        
+                window.location.href = url;
+            }   
+
+            // Attach the click event handler to the button
+            modalOverlay.addEventListener("click", function (e) {
+                if (e.target && e.target.id === "logout") {
+                    logoutPage();
+                }
+            });
+
+            function history(username) {
+                var url = "History.php?username=" + encodeURIComponent(username);
+        
+                window.location.href = url;
+            }
+
+            // Attach the click event handler to the button
+            modalOverlay.addEventListener("click", function (e) {
+                if (e.target && e.target.id === "history") {
+                    history(username);
+                }
+            });
+
+            function editProfile(username) {
+                var url = "Edit profile.php?username=" + encodeURIComponent(username);
+
+                window.location.href = url;
+            }
+
+            // Attach the click event handler to the button
+            modalOverlay.addEventListener("click", function (e) {
+                if (e.target && e.target.id === "edit") {
+                    editProfile(username);
+                }
+            });
+
+            function validateForm() {
+                var fromSelect = document.getElementById("From");
+                var toSelect = document.getElementById("TO");
+                var dateInput = document.getElementById("date");
+                var timeSelect = document.getElementById("time");
+                var noOfSeats = document.getElementById("no-of-seats");
+                var selectedSeat = document.getElementById("selectedSeat");
+
+                // Check if "From" and "To" selections are the same
+                if (fromSelect.value === toSelect.value) {
+                    alert("Please select 'From' and 'To' locations!");
+                    return false; // Prevent form submission
+                }
+
+                // Check if date and time are selected
+                if (dateInput.value === "") {
+                    alert("Please select a date of travel!");
+                    return false; // Prevent form submission
+                }
+
+                if (timeSelect.value === "") {
+                    alert("Please select a time of travel!");
+                    return false; // Prevent form submission
+                }
+
+                if (timeSelect.value === "No buses available for today") {
+                    alert("Today there are no buses for your selected destination! Please select another date.");
+                    return false; // Prevent form submission
+                }
+
+                // Check if the number of seats is selected
+                if (noOfSeats.value === "") {
+                    alert("Please select the number of seats!");
+                    return false; // Prevent form submission
+                }
+
+                // Check if the seats are selected or not
+                if (selectedSeat.value === "") {
+                    alert("Please select a seat to continue!");
+                    return false; // Prevent form submission
+                }
+
+            // Form is valid, allow submission
+            return true;
+            }
+        
+            window.addEventListener('DOMContentLoaded', function () {
+                var fromSelect = document.getElementById("From");
+                var toSelect = document.getElementById("TO");
+                var noOfSeatsSelect = document.getElementById("no-of-seats");
+
+                // Initial options for the "To" dropdown
+                var initialToOptions = toSelect.innerHTML;
+
+                // Function to calculate the total ticket price
+                function calculateTotalPrice() {
+                    var selectedDestination = toSelect.value;
+                    var selectedSeats = parseInt(noOfSeatsSelect.value);
+
+                    // Get the ticket price for the selected destination
+                    var ticketPrice = ticketPrices[selectedDestination];
+
+                    // Calculate the total price
+                    var totalPrice = ticketPrice * selectedSeats;
+
+                    // Display the total price to the user
+                    var totalPriceDisplay = document.getElementById("totalPriceDisplay");
+                    totalPriceDisplay.innerText = "Rs. " + totalPrice;
+
+                    // Set the value in the hidden input field
+                    document.getElementById("totalPrice").value = totalPrice;
+                }
+
+
+                fromSelect.addEventListener('change', function () {
+                    var selectedFrom = fromSelect.value;
+
+                    // Restore the initial options in the "To" dropdown
+                    toSelect.innerHTML = initialToOptions;
+
+                    // Remove the selected option from the "To" dropdown
+                    var selectedOption = document.querySelector('#TO option[value="' + selectedFrom + '"]');
+                    if (selectedOption) {
+                        selectedOption.remove();
+                    }
+
+                    // Calculate the total price when the "From" selection changes
+                    calculateTotalPrice();
+                });
+
+                // Add an event listener to the "Number of Seats" select element
+                noOfSeatsSelect.addEventListener("change", calculateTotalPrice);
+            });
+
+
+            window.addEventListener('DOMContentLoaded', function() {
+                var dateInput = document.getElementById("date");
+                var currentDate = new Date();
+                var tomorrowDate = new Date();
+                var dayAfterTomorrowDate = new Date();
+
+                // Calculate dates for tomorrow and the day after tomorrow
+                tomorrowDate.setDate(currentDate.getDate() + 1);
+                dayAfterTomorrowDate.setDate(currentDate.getDate() + 2);
+
+                // Format the dates as yyyy-mm-dd for input's min and max attributes
+                var minDate = currentDate.toISOString().split('T')[0];
+                var maxDate = dayAfterTomorrowDate.toISOString().split('T')[0];
+
+                dateInput.setAttribute("min", minDate);
+                dateInput.setAttribute("max", maxDate);
+            });
+
+            // Define departure times for each destination
+            var departureTimes = {
+                "Jaffna": ["08:00 AM", "10:30 AM", "02:00 PM"],
+                "Badulla": ["09:15 AM", "12:45 PM", "03:30 PM"],
+                "Colombo": ["07:30 AM", "11:00 AM", "01:45 PM"],
+                "Galle": ["08:45 AM", "11:15 AM", "03:15 PM"]
+            };
+  
+            // Function to filter departure times for today
+            function filterDepartureTimes() {
+                var selectedDestination = document.getElementById("TO").value;
+                var dateInput = document.getElementById("date");
+                var currentDate = new Date();
+                var selectedDate = new Date(dateInput.value);
+                
+                var timeSelect = document.getElementById("time");
+                //timeSelect.innerHTML = ""; // Clear the existing options
+
+                if (selectedDate.getDate() === currentDate.getDate()) {
+                    var currentTime = currentDate.getHours() * 60 + currentDate.getMinutes();
+                    var filteredTimes = departureTimes[selectedDestination].filter(function (time) {
+                        var [hour, minute] = time.split(":");
+                        var departureTime = parseInt(hour) * 60 + parseInt(minute);
+                        return departureTime > currentTime;
+                    });
+
+                    if (filteredTimes.length === 0) {
+                        // No buses available for today
+                        var option = document.createElement("option");
+                        option.text = "No buses available for today";
+                        timeSelect.add(option);
+                    } 
+                    else {
+                        for (var i = 0; i < filteredTimes.length; i++) {
+                            var option = document.createElement("option");
+                            option.text = filteredTimes[i];
+                            timeSelect.add(option);
+                        }
+                    }
+                } 
+                else {
+                    for (var i = 0; i < departureTimes[selectedDestination].length; i++) {
+                        var option = document.createElement("option");
+                        option.text = departureTimes[selectedDestination][i];
+                        timeSelect.add(option);
+                    }
+                }
+            }
+
+            // Add an event listener to the date input to update departure times when the date changes
+            var dateInput = document.getElementById("date");
+            dateInput.addEventListener("change", filterDepartureTimes);
+
+            // Add click event listeners to the seats
+            const seats = document.querySelectorAll('.seat');
+
+            seats.forEach(seat => {
+                seat.addEventListener('click', () => {
+                    if (!seat.classList.contains('unselectable')) {
+                        seat.classList.toggle('selected');
+                    }
+                });
+            });
+
+            // Add an event listener to the time select element
+            var timeSelect = document.getElementById("time");
+
+            timeSelect.addEventListener("change", function() {
+                // Check if a value has been selected
+                if (timeSelect.value !== "") {
+                    // Your seat booking code here
+                    // Initialize an array to store selected seats
+                    var selectedSeats = [];
+
+                    // Array to store already booked seats
+                    var bookedSeats = generateRandomBookedSeats();
+
+                    // Function to generate random booked seats (for demonstration purposes)
+                    function generateRandomBookedSeats() {
+                        // Define your seat rows
+                        var rows = [
+                            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+                            "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+                            "U", "V", "W", "X", "Y", "Z"
+                        ];
+                        var columns = ["1", "2"]; // Define your seat columns
+                        var bookedSeats = [];
+
+                        // Generate a random number of booked seats (between 5 and 15 for example)
+                        var numBookedSeats = Math.floor(Math.random() * 11) + 5;
+
+                        while (bookedSeats.length < numBookedSeats) {
+                            // Randomly select a row and column
+                            var randomRow = rows[Math.floor(Math.random() * rows.length)];
+                            var randomColumn = columns[Math.floor(Math.random() * columns.length)];
+
+                            var seatName = randomRow + randomColumn;
+
+                            // Check if the seat is not already booked
+                            if (!bookedSeats.includes(seatName)) {
+                                bookedSeats.push(seatName);
+                            }
+                        }
+
+                        return bookedSeats;
+                    }
+
+                    // Add a click event listener to each seat
+                    var seatsNo = document.querySelectorAll(".seat");
+                    seatsNo.forEach(function(seat) {
+                        seat.addEventListener("click", function() {
+                            // Get the seat name
+                            var seatName = this.innerText;
+
+                            // Check if the seat is already booked
+                            if (bookedSeats.includes(seatName)) {
+                                // Seat is already booked, cannot be selected
+                                alert("This seat is already booked.");
+                            } 
+                            else {
+                                // Get the selected seat count from the dropdown
+                                var selectedSeatCount = parseInt(document.getElementById("no-of-seats").value);
+
+                                // Check if the seat is already selected
+                                var seatIndex = selectedSeats.indexOf(seatName);
+                                if (seatIndex !== -1) {
+                                    // Seat is already selected, so unselect it
+                                    selectedSeats.splice(seatIndex, 1); // Remove from selectedSeats array
+                                    seat.style.backgroundColor = ""; // Reset background color
+                                } else {
+                                    // Check if the selected seat count has been reached
+                                    if (selectedSeats.length < selectedSeatCount) {
+                                        // Add the seat to the selectedSeats array
+                                        selectedSeats.push(seatName);
+
+                                        seat.style.backgroundColor = "#4CAF50"; // Green for selected seats
+                                    } else {
+                                        alert("You have already selected the maximum number of seats.");
+                                    }
+                                }
+
+                                // Update a hidden input field with selected seats
+                                document.getElementById("selectedSeat").value = selectedSeats.join(', ');
+                            }
+                        });
+
+                        // Check if the seat is already booked and set its background color
+                        if (bookedSeats.includes(seat.innerText)) {
+                            // Randomly assign blue or pink color for booked seats
+                            var randomColor = Math.random() < 0.5 ? "#3085C3" : "#B0578D";
+                            seat.style.backgroundColor = randomColor;
+                            seat.classList.add("booked"); // Add a booked class for styling
+                        }
+                    });
+                }
+            });
+
+            var ticketPrices = {
+                "Jaffna": 2400,    // Adjust the prices as needed
+                "Badulla": 2250,
+                "Colombo": 2300,
+                "Galle": 2850
+            };
+        </script>
+    
+        <div id="footerContainer"></div>
+    </body>
+</html>

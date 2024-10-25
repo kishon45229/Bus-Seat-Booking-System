@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <title>Abirami Travels | Make payment</title>
+    
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                background-color: whitesmoke;
+                box-sizing: border-box;
+                min-height: 100vh;
+
+				--bkg: #5eb3fd;
+				--white: #e7e6e6;
+
+				background-color: var(--white);
+				background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+                margin: 0;
+                padding: 0;
+            }
+
+            .topnav {
+                background-color: #333;
+                overflow: hidden;
+            }
+            
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+                
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+                
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 40pt;
+                font-weight: 1000;
+                padding-bottom: 30px;
+            }
+
+            form {
+                background-color: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+                width: 500px;
+                margin: 30px auto;
+            }
+
+            input, select {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 20px;
+                background-color: #f2f2f2;
+                font-size: 16px;
+                color: #666;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            label {
+                display: block;
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            input[type="text"],
+            input[type="date"] {
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+
+            input[type="submit"] {
+                display: inline-block;
+                text-align: center;
+                width: 100%; 
+                font-size: large;
+                margin-top: 30px;
+                background-color: #4CAF50;
+                color: black;
+                text-decoration: none;
+                border-style: none;
+                border-radius: 5px;
+            }
+
+            input[type="submit"]:hover {
+                cursor: pointer;
+                background-color: black;
+                color: white;
+            }
+
+            .cancel p{
+                text-align: center;
+            }
+
+            footer {
+                background-color: #333;
+                color: #fff;
+                padding: 30px 0;
+                font-size: 14px;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .col {
+                flex: 1;
+                margin: 0 20px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            p {
+                margin-bottom: 20px;
+            }
+
+            .social-icons {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+
+            .social-icons li {
+                margin-right: 10px;
+            }
+
+            .social-icons li a {
+                display: block;
+                width: 30px;
+                height: 30px;
+                background-color: #fff;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 50%;
+            }
+
+            .social-icons li a:hover {
+                background-color: #f2f2f2;
+            }
+
+            .fa {
+                color: #333;
+                font-size: 16px;
+            }
+        </style>  
+
+        <!-- Load and inject the external footer.html using JavaScript -->
+        <script>
+            $(document).ready(function () {
+                $("#footerContainer").load("Footer.html");
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Payment</h1>
+
+        <form onsubmit="return validateForm();" method="post" action="Payment_Database.php">
+            <label for="cardnumber">Card Number:</label>
+            <input type="text" id="cardnumber" name="cardnumber" maxlength="19">
+
+            <label for="name">Name on Card:</label>
+            <input type="text" id="name" name="name"d>
+
+            <label for="expirydate">Expiration Date:</label>
+            <input type="date" id="expirydate" name="expirydate">
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" maxlength="3">
+            
+            <!-- Add hidden input fields to store the values -->
+            <input type="hidden" id="userid" name="userid" value="">
+            <input type="hidden" id="username" name="username" value="">
+            <input type="hidden" id="from" name="from" value="">
+            <input type="hidden" id="to" name="to" value="">
+            <input type="hidden" id="date" name="date" value="">
+            <input type="hidden" id="time" name="time" value="">
+            <input type="hidden" id="no-of-seats" name="no-of-seats" value="">
+            <input type="hidden" id="selectedSeat" name="selectedSeat" value="">
+            <input type="hidden" id="ticket" name="ticket" value="">
+
+            <input type="submit" value="Process payment">      
+
+            <div class="cancel">
+                <p><a href="Book seat.html">Cancel</a></p>
+            </div>
+        </form>
+
+        <script>
+            // Function to format the card number input with spaces after every 4 digits
+            function formatCardNumber() {
+                var cardNumberInput = document.getElementById("cardnumber");
+                var cardNumber = cardNumberInput.value.replace(/\s/g, ''); // Remove existing spaces
+                var formattedCardNumber = '';
+
+                for (var i = 0; i < cardNumber.length; i++) {
+                    formattedCardNumber += cardNumber[i];
+
+                    if ((i + 1) % 4 === 0 && i !== cardNumber.length - 1) {
+                        formattedCardNumber += ' ';
+                    }
+                }
+
+                cardNumberInput.value = formattedCardNumber;
+            }
+
+            // Add an event listener to format the card number as the user types
+            document.getElementById("cardnumber").addEventListener("input", formatCardNumber);
+
+            // Function to allow only numeric input
+            function allowOnlyNumericInput(e) {
+                var key = e.keyCode || e.which;
+
+                // Allow numeric digits (0-9)
+                if (key < 48 || key > 57) {
+                    e.preventDefault();
+                }
+            }
+
+            // Add event listeners to card number and CVV inputs to allow only numeric input
+            document.getElementById("cardnumber").addEventListener("keypress", allowOnlyNumericInput);
+            document.getElementById("cvv").addEventListener("keypress", allowOnlyNumericInput);
+
+            // Function to prevent numeric input for the name field
+            function preventNumericInput(e) {
+                var key = e.keyCode || e.which;
+
+                // Prevent numeric digits (0-9)
+                if (key >= 48 && key <= 57) {
+                    e.preventDefault();
+                }
+            }
+
+            // Add an event listener to prevent numeric input for the name field
+            document.getElementById("name").addEventListener("keypress", preventNumericInput);
+
+            // Function to set the minimum date for the expiry date field
+            function setMinExpiryDate() {
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+                var yyyy = today.getFullYear();
+
+                var currentDate = yyyy + '-' + mm + '-' + dd;
+                document.getElementById("expirydate").min = currentDate;
+            }
+
+            // Call the setMinExpiryDate function to set the minimum date on page load
+            setMinExpiryDate();
+
+            // Add an event listener to format the card number as the user types
+            document.getElementById("cardnumber").addEventListener("keyup", formatCardNumber);
+
+            function validateForm() {
+                // Validate the Name field (you can add more validation rules)
+                var nameInput = document.getElementById("name");
+                if (nameInput.value.trim() === "") {
+                    alert("Name on Card is required");
+                    nameInput.focus();
+                    return false;
+                }
+
+                // Validate the Card Number field (must contain exactly 16 digits)
+                var cardNumberInput = document.getElementById("cardnumber");
+                var cardNumber = cardNumberInput.value.replace(/\s/g, ''); // Remove spaces
+                if (!/^\d{16}$/.test(cardNumber)) {
+                    alert("Card Number must contain exactly 16 digits");
+                    cardNumberInput.focus();
+                    return false;
+                }
+
+                // Validate the Expiration Date field (you can add more validation rules)
+                var expiryDateInput = document.getElementById("expirydate");
+                if (expiryDateInput.value.trim() === "") {
+                    alert("Expiration Date is required");
+                    expiryDateInput.focus();
+                    return false;
+                }
+
+                // Validate the CVV field (must contain exactly 3 digits)
+                var cvvInput = document.getElementById("cvv");
+                var cvv = cvvInput.value.trim();
+                if (!/^\d{3}$/.test(cvv)) {
+                    alert("CVV must contain exactly 3 digits");
+                    cvvInput.focus();
+                    return false;
+                }
+
+                // If all validation checks pass, you can submit the form
+                // return true;
+            }
+
+            /// Function to extract query parameters from the URL
+            function getQueryParams() {
+                var queryParams = {};
+                var queryString = window.location.search.substring(1);
+                var keyValuePairs = queryString.split('&');
+
+                for (var i = 0; i < keyValuePairs.length; i++) {
+                    var keyValuePair = keyValuePairs[i].split('=');
+                    var key = decodeURIComponent(keyValuePair[0]);
+                    var value = decodeURIComponent(keyValuePair[1]);
+                    queryParams[key] = value;
+                }
+
+                return queryParams;
+            }
+
+            // Example usage
+            var queryParams = getQueryParams();
+            var userID = queryParams.userid;
+            var username = queryParams.username;
+            var from = queryParams.from;
+            var to = queryParams.to;
+            var date = queryParams.date;
+            var time = queryParams.time;
+            var noOfSeats = queryParams.noOfSeats;
+            var selectedSeat = queryParams.selectedSeat;
+            var ticketPrice = queryParams.ticket;
+
+            // Populate hidden input fields with query parameter values
+            document.getElementById("userid").value = userID;
+            document.getElementById("username").value = username;
+            document.getElementById("from").value = from;
+            document.getElementById("to").value = to;
+            document.getElementById("date").value = date;
+            document.getElementById("time").value = time;
+            document.getElementById("no-of-seats").value = noOfSeats;
+            document.getElementById("selectedSeat").value = selectedSeat;
+            document.getElementById("ticket").value = ticketPrice;
+        </script>
+
+        <div id="footerContainer"></div>
+    </body>
+</html>

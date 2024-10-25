@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <title>Abirami Travels | Create account</title>
+
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                background-color: whitesmoke;
+                box-sizing: border-box;
+                min-height: 100vh;
+
+				--bkg: #5eb3fd;
+				--white: #e7e6e6;
+
+				background-color: var(--white);
+				background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+                margin: 0;
+                padding: 0;
+            }
+        
+            .topnav {
+                background-color: #333;
+                overflow: hidden;
+            }
+        
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+            
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+            
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            form {
+                background-color: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+                width: 600px;
+                margin: 40px auto;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 40pt;
+                font-weight: 1000;
+                padding-bottom: 30px;
+            }
+
+            label {
+                display: block;
+                margin-top: 30px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+            
+            input {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 20px;
+                background-color: #f2f2f2;
+                font-size: 16px;
+                color: #666;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            select {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border: 0.1px solid #999;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                font-size: 16px;
+                color: #666;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                margin-bottom: 40px;
+            }
+
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"] {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            
+            input[type="submit"] {
+                background-color: #4CAF50;
+                color: black;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: large;
+                width: 100%;
+            }
+
+            input[type="submit"]:hover {
+                cursor: pointer;
+                background-color: black;
+                color: white;
+            }
+
+            .signin p{
+                text-align: center;
+            }
+        </style>
+
+         <!-- Load and inject the external footer.html using JavaScript -->
+         <script>
+            $(document).ready(function () {
+                $("#footerContainer").load("Footer.html");
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Create an account</h1>
+
+        <form onsubmit="return validateForm();" method="post" action="Create_account_Database.php">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name"> 
+
+            <label for="NIC Number">NIC Number:</label>
+            <input type="text" id="NIC_Number" name="NIC_Number">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"> 
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password"> 
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone">
+            
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+            
+            <label for="gender">Gender:</label>
+            <select type="text" id="gender" name="gender">
+                <option value="">--Select--</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <input type="submit" value="Create account">      
+
+            <div class="signin">
+                <p>Already have an account?</p>
+                <p><a href="Index.html">Sign in</a></p>
+            </div>
+        </form>
+
+        <script>
+            // Function to validate the form
+            function validateForm() {
+                var name = document.getElementById("name").value;
+                var nicNumber = document.getElementById("NIC_Number").value;
+                var email = document.getElementById("email").value;
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var phone = document.getElementById("phone").value;
+                var city = document.getElementById("city").value;
+                var gender = document.getElementById("gender").value;
+        
+                // Validation for name: Should contain only letters and spaces
+                var namePattern = /^[a-zA-Z\s]+$/;
+                if (!name.match(namePattern)) {
+                    alert("Please enter a valid name.");
+                    return false;
+                }
+
+                // Validation for NIC Number: Should be in a specific format (adjust as needed)
+                var nicPattern = /^[0-9]{10}$/;
+                if (!nicNumber.match(nicPattern)) {
+                    alert("Please enter a valid NIC Number (e.g., 1234567890).");
+                    return false;
+                }
+
+                // Validation for email: Should be a valid email address
+                var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!email.match(emailPattern)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+
+                // Validation for username: Should contain only letters and numbers
+                var usernamePattern = /^[a-zA-Z0-9]+$/;
+                if (!username.match(usernamePattern)) {
+                    alert("Username should contain only letters and numbers.");
+                    return false;
+                }
+
+                // Validation for password: You can define your own password requirements
+                // Here, we're checking that the password is at least 8 characters long
+                if (password.length < 8) {
+                    alert("Password must be at least 8 characters long.");
+                    return false;
+                }
+
+                // Validation for phone number: Should be in a specific format (adjust as needed)
+                var phonePattern = /^\d{10}$/;
+                if (!phone.match(phonePattern)) {
+                    alert("Please enter a valid 10-digit phone number.");
+                    return false;
+                }
+
+                // Validation for the "From" field: You can define your own validation rules
+                if (city.length < 3) {
+                    alert("Please enter a valid source location.");
+                    return false;
+                }
+
+                // Validation for the Gender field: Make sure it's not empty
+                if (gender === "") {
+                    alert("Please select your gender.");
+                    return false;
+                }
+
+                // If all validations pass, return true to submit the form
+                return true;
+            }
+        </script>
+
+        <div id="footerContainer"></div>
+    </body>
+</html>

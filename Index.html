@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <title>Abirami Travels | Sign In</title>
+
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                background-color: whitesmoke;
+                box-sizing: border-box;
+                min-height: 100vh;
+
+				--bkg: #5eb3fd;
+				--white: #e7e6e6;
+
+				background-color: var(--white);
+				background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+                margin: 0;
+                padding: 0;
+            }
+
+            .topnav {
+                background-color: #333;
+                overflow: hidden;
+            }
+        
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+            
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+            
+            .topnav a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            form {
+                background-color: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+                width: 450px;
+                margin: 50px auto;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 40pt;
+                font-weight: 1000;
+                padding-bottom: 30px;
+            }
+
+            label {
+                display: block;
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            input, select {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 20px;
+                background-color: #f2f2f2;
+                font-size: 16px;
+                color: #666;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+
+            input[type="submit"] {
+                background-color: #4CAF50;
+                color: black;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: large;
+                width: 100%;
+            }
+
+            input[type="submit"]:hover {
+                background-color: black;
+                color: white;
+            }
+
+            button {
+                background-color: #4CAF50;
+                color: black;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: large;
+                width: 450px;
+            }
+
+            button:hover {
+                background-color: black;
+                color: white;
+            }
+
+            .createAccount p{
+                text-align: center;
+            }
+
+            .admin-login {
+                padding-top: 30px;
+                text-align: center;
+            }
+        </style>
+
+        <!-- Load and inject the external footer.html using JavaScript -->
+        <script>
+            $(document).ready(function () {
+                $("#footerContainer").load("Footer.html");
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Sign in with your account</h1>
+        
+        <form onsubmit="return validateForm();" method="post" action="Index_Database.php">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+
+            <input type="submit" value="Sign In">
+
+            <div class="createAccount">
+                <p>New here?</p>
+                <p><a href="Create account.html">Create account</a></p>
+            </div><br> 
+        </form>s
+        
+        <script>
+            function validateForm() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+
+                if (username === "" || password === "") {
+                    alert("Please enter both username and password!");
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
+
+        <div id="footerContainer"></div>
+    </body>
+</html>
